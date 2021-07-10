@@ -31,7 +31,7 @@ class Calculator extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <div className="card">
+                        <div className="card mt-2">
                             <div className="card-header">
                                 Calculator Smart
                             </div>
