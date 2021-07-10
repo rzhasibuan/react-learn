@@ -1,32 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 
-class Calculator extends Component {
+class Calculator extends Component {    
     constructor(){
         super()
         this.state = {
             bilangan1: '',
             bilangan2: '',
-            hasil : '',
-         }
+            hasil: '',
+        }
     }
-
-    changeHandlerCalculator = (e) => {
+    changeHandlerHasil= (e) => {
         this.setState({
             [e.target.name]: e.target.value,
         })
     }
-
-    submitPerkalian = (e) => {
+    submitHandler = (e) =>  {
         e.preventDefault()
-        console.log(this.state)
-        this.setState({
-            hasil: this.state.bilangan1 * this.state.bilangan2
-        })
+       this.setState({
+           hasil: this.state.bilangan1 * this.state.bilangan2
+       })
     }
-
     render() {
-        const hasil = this.state.hasil;
         return(
             <div className="container">
                 <div className="row">
@@ -36,14 +31,14 @@ class Calculator extends Component {
                                 Calculator Smart
                             </div>
                             <div className="card-body">
-                                <form onSubmit={this.submitPerkalian}>
+                                <form onSubmit={this.submitHandler}>
                                     <div className="mb-2">
                                         <label htmlFor="bilangan1">Bilangan 1</label>
-                                        <input type="text" value={this.state.bilangan1} onChange={this.changeHandlerCalculator} name="bilangan1" className="form-control"/>
+                                        <input type="text" value={this.state.bilangan1} onChange={this.changeHandlerHasil} name="bilangan1" className="form-control"/>
                                     </div>
                                     <div className="mb-2">
                                         <label htmlFor="bilangan2">Bilangan 2</label>
-                                        <input type="text" value={this.state.bilangan2} onChange={this.changeHandlerCalculator} name="bilangan2" className="form-control"/>
+                                        <input type="text" value={this.state.bilangan2} onChange={this.changeHandlerHasil} name="bilangan2" className="form-control"/>
                                     </div>
                                     <div className="mb-2">
                                        <button className="btn btn-primary mr-2">x</button>
@@ -52,7 +47,7 @@ class Calculator extends Component {
                                        <button className="btn btn-primary mr-2">/</button> */}
                                     </div>
                                     <div className="mb-2">
-                                        <div>Hasil : {hasil} </div>
+                                        <div>Hasil : {this.state.hasil} </div>
                                     </div>
                                 </form>
                             </div>
