@@ -4,14 +4,16 @@ import ReactDOM from 'react-dom';
 // import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import App from './App';
+// import App from './App';
 // import Calculator from './calculator';
+import User from './User';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
     {/* <Calculator/> */}
+    <User/>
   </React.StrictMode>,
   document.getElementById('root')
 );
