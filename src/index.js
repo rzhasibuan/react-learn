@@ -8,12 +8,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Calculator from './calculator';
 import User from './User';
 import reportWebVitals from './reportWebVitals';
+import Post from './Post';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <Calculator/> */}
     <User/>
+    <Post/>
   </React.StrictMode>,
   document.getElementById('root')
 );
