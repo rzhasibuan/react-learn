@@ -4,18 +4,21 @@ import ReactDOM from 'react-dom';
 // import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import App from './App';
 // import Calculator from './calculator';
-import User from './User';
+// import User from './User';
 import reportWebVitals from './reportWebVitals';
-import Post from './Post';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+// import Post from './Post';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
     {/* <Calculator/> */}
-    <User/>
-    <Post/>
+    {/* <User/> */}
+    {/* <Post/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
