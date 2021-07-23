@@ -164,12 +164,109 @@ useEffect(() => {
 untuk mengunakan router pada react bisa mengunakan reactrouter.com
 ```
 npm install react-router-dom
+dalam pengunaan react router sangatlah mudah tinggal install package nya terlebih dahulu 
 
 ```
+
+setelah package berhasil di install buat folder di dalam src dengan nama router kemudian buat file juga dengan nama index.js dan file tersebut tujuannya berguna untuk meletakkan script pada router 
+
+```
+import React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import Home form './src/view/Home';
+import About form './src/view/About';
+
+
+function Router(props) {
+    return (
+        <div>
+            <Switch>
+                <Route exact path="/"> 
+                    <Home/>
+                </Route>
+                
+                <Route path="/about" component={About} />
+            </Switch>
+        </div>
+    );
+}
+
+export default Router;
+```
+oya tapi sebelumnya kita harus panggil Router tersebut di dalam file App.js
+
+```
+<Router/>
+```
+
+dan kemudian selanjutnya jalankan file index.js pada root file project kita 
+```
+<BrowserRouter>
+<App/>
+</BrowserRouter>
+```
+
+oke sekarang kita mulai bedah kodenya satu persatu ya dimulai dari
+
+```
+<Route exact path="/"> 
+    <Home/>
+</Route>
+<!-- Route disni berfungsi untuk membuat router pada project kita bisa dengan mengunakan penutup seperti di atas bisa juga tidak seperti dibawah ini-->
+<Route path="/about" component={About} />
+<!-- path disini berfungsi untuk membuat url seperti /home , /about dll -->
+<!-- Switch disini berperan sebagai parent yang memiliki beberapa child seperti Route -->
+<!-- kemudian BrowserRouter sama juga berperannya seperti Switch yaitu sebagai perent dari Switch -->
+```
+
+untuk dokumentasi resminya bisa langsung ke https://reactrouter.com/web/guides/quick-start
+
 ### notFound page
+untuk membuat dan menerapkan page not found sangatlah sederhana kita hanya tinggal membuat sebuah file terlebih dahulu di dalam directory src/view/errors/notfound.js
+setelah directory telah kita buat lalu kemudian tambahkan script dibawah ini kedalam file router kita 
 
+```
+<Route path="*" component={NotFound} />
+<!-- pada path file dia atas kita beri router dengan simbol * yang bertujuan jika kita mencari router lain yang tidak ditemukan maka otomatis akan memanggil component notFound.js yang telah kita buat tadi sebelumnya  tapi jangan lupa import module nya terlebih dahulu dia atas -->
+
+import NotFound from '../view/errors/notfound';
+ 
+```
+oya satu lagi kenapa kita selalu mengunakan exact pada setiap route yang kita miliki ? 
+jawabanya agar route tersebut menampilkan hasil sesuai apa yang kita inginkan makanya itu kita harus selalu menambahkan exact di setiap route yang kita tulis 
 ### route wildcard
+route wildcard atau biasanya jika disebut url yang memiliki sebuah parameter di dalamnya seperti https://detik.com/berita/1 angka 1 tersebut adalah sebuah parameter yang harus kita terapkan kedalam sebuah route
+yang nantinya bertujuan untuk kita panggil dalam menampilkan sebuah data mengunakan sebuah parameter
 
+
+
+buat route pada file router yang pada path nya menampung identifier yang nantinya akan kita tampung kedalam module UserShow
+```
+Route exact path="/users/:identifier">
+    <UserShow />
+</Route>
+
+```
+
+show
+```
+const [user, setUsers] = useState([]);
+let {identifier} = useParams();
+
+const getShowUser = async () => {
+    try{
+        let response = await axios.get(`https://jsonplaceholder.typicode.com/users/${identifier}`);
+        setUsers(response.data);
+    }catch(e) {
+        console.log(e.message);
+    }
+}
+
+useEffect(() => {
+    getShowUser()
+},[identifier])
+
+```
 ### state management context
 
 ### recoil
